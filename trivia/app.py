@@ -19,4 +19,9 @@ app = create_app()
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
 
+
+# To run the app using Flask CLI, use the command:
 #flask --app trivia.app:create_app run
+
+# To activate venv: 
+# source trivia/Scripts/activate
