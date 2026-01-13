@@ -9,6 +9,7 @@ env/
 
 # OS files
 .DS_Store
+conftest.py
 
 # Data files
 data/scores.json
