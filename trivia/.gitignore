@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environments
+venv/
+env/
+.trivia/
+
+# OS files
+.DS_Store
+
+# Data files
+data/scores.json
