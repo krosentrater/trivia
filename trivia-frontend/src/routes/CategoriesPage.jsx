@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { fetchCategories } from "../services/api.js";
+import { useNavigate } from "react-router-dom";
 import "../styles/CategoriesPage.css";
 
 export default function CategoriesPage() {
     const [categories, setCategories] = useState([]);
+
+    const navigate = useNavigate();
 
     const colors = [
         "#FFB3BA",
@@ -21,9 +24,9 @@ export default function CategoriesPage() {
 
 return (
     <div>
-        <h2>
+        <h1>
             Choose a Category
-        </h2>
+        </h1>
 
         <div className="categories-grid">
             {categories.map(cat => {
@@ -34,6 +37,7 @@ return (
             <div
                 key={cat.id}
                 className="category-card"
+                onClick={() => navigate(`/quiz/${cat.id}`)}
                 style={{ backgroundColor: randomColor }}
             >
                 {cat.name}

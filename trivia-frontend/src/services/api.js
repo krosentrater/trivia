@@ -11,7 +11,7 @@ export async function fetchCategories() {
 export async function fetchQuestions(categoryId) {
     const response = await fetch(`${BASE_URL}/questions?category=${categoryId}`);
     const data = await response.json();
-    return data.questions;
+    return data.results;
 }
 
 // Submits a new score to the backend API

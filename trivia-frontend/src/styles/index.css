@@ -1,1 +1,25 @@
-/* Global styles */
+:root {
+    text-align: center;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    background-color: #FAF7F2;
+    font-family: "Fredoka", sans-serif; 
+}
+
+:root h1 {
+    font-size: 3rem;
+}
+
+:root p {
+    font-size: 1.5rem;
+}
+
+button {
+    background-color: #6C63FF;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}

@@ -8,7 +8,7 @@
 .category-card {
   padding: 20px;
   border-radius: 16px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   text-align: center;
   cursor: pointer;
   font-family: 'Fredoka', sans-serif;
@@ -17,10 +17,4 @@
 
 .category-card:hover {
   transform: scale(1.05);
-}
-
-h1 {
-  text-align: center;
-  font-family: 'Fredoka', sans-serif;
-  margin-top: 1rem;
 }
