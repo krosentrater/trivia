@@ -18,3 +18,17 @@
 .category-card:hover {
   transform: scale(1.05);
 }
+
+.answer-button {
+  margin: 10px;
+}
+
+.text-answer-input {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  width: 25%;
+  box-sizing: border-box;
+  margin: 10px;
+}

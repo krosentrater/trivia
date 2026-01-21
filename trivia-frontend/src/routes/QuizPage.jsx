@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchQuestions } from "../services/api";
 import "../styles/QuestionsPage.css";
 
@@ -11,6 +11,7 @@ export default function Quiz() {
     const [userAnswer, setUserAnswer] = useState(""); // Tracks user answer
     const [hasSubmitted, setHasSubmitted] = useState(false); // Tracks if user has submitted an answer
     const [isCorrect, setIsCorrect] = useState(null); // Tracks if the answer is correct
+    
 
 useEffect(() => {
     async function load() {
@@ -25,6 +26,7 @@ if (questions.length === 0) {
 }
 
 const currentQuestion = questions[currentIndex];
+const questionType = currentQuestion.type; // 'multiple', 'boolean', or 'text'
 
 
 function handleSubmit() {
@@ -51,10 +53,27 @@ function handleNext() {
 
             <p><strong>Question {currentIndex + 1} of {questions.length}</strong></p>
             <p>{currentQuestion.question}</p>
+
+            {questionType === 'boolean' && (
+                <div>
+                    <button className="answer-button" onClick={() => setUserAnswer("True")}>True</button>
+                    <button className="answer-button" onClick={() => setUserAnswer("False")}>False</button>
+                </div>
+            )}
+
+            {questionType === 'multiple' && (
+                <div>
+                    {currentQuestion.incorrect_answers.map((answer, idx) => (
+                        <button className="answer-button" key={idx} onClick={() => setUserAnswer(answer)}>{answer}</button>
+                    ))}
+                    <button className="answer-button" onClick={() => setUserAnswer(currentQuestion.correct_answer)}>{currentQuestion.correct_answer}</button>
+                </div>
+            )}
             
             {!hasSubmitted && (
                 <>
                     <input
+                        className="text-answer-input"
                         type="text"
                         value={userAnswer}
                         onChange={(e) => setUserAnswer(e.target.value)}
