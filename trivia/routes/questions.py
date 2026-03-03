@@ -5,10 +5,11 @@ questions_bp = Blueprint('questions', __name__)
 
 @questions_bp.get('/api/questions')
 def get_questions():
-    params = {}
+
+    params = request.args.to_dict(flat=True) 
 
     # Validate amount
-    amount_raw = request.args.get('amount', '10')
+    amount_raw = params.get('amount', '10')
     try:
         amount = int(amount_raw)
         if amount < 1 or amount > 50:
@@ -18,10 +19,11 @@ def get_questions():
 
     params['amount'] = str(amount)
 
-    for p in ('category', 'difficulty', 'type', 'encode'):
-        v = request.args.get(p)
-        if v:
-            params[p] = v
+    cleaned = {}
+    for k, v in params.items():
+        if v not in (None, "", "null", "undefined"):
+            cleaned[k] = v
+    params = cleaned
 
     try:
         return jsonify(fetch_questions(params))

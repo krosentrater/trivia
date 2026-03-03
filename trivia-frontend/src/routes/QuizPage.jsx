@@ -11,21 +11,26 @@ export default function Quiz() {
     const [userAnswer, setUserAnswer] = useState(""); // Tracks user answer
     const [hasSubmitted, setHasSubmitted] = useState(false); // Tracks if user has submitted an answer
     const [isCorrect, setIsCorrect] = useState(null); // Tracks if the answer is correct
-    
 
 useEffect(() => {
     async function load() {
-        const q = await fetchQuestions(categoryId);
+        const token = localStorage.getItem("token"); // Get session token from local storage
+        const q = await fetchQuestions(categoryId, token);
         setQuestions(q);
     }
     load();
 }, [categoryId]);
 
-if (questions.length === 0) {
-    return <div>Loading questions...</div>;
+if (!Array.isArray(questions) || questions.length === 0) {
+    return <p>Loading questions...</p>;
 }
 
 const currentQuestion = questions[currentIndex];
+
+if (!currentQuestion) {
+    return <p>No questions available.</p>;
+}
+
 const questionType = currentQuestion.type; // 'multiple', 'boolean', or 'text'
 
 

@@ -5,11 +5,13 @@ def create_app():
     from trivia.routes.categories import categories_bp
     from trivia.routes.questions import questions_bp
     from trivia.routes.scores import scores_bp
+    from trivia.routes.token import token_bp
     app = Flask(__name__)
     CORS(app) # CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})  # Adjust as needed"}) React app origin
 
     app.register_blueprint(categories_bp)
     app.register_blueprint(questions_bp)
+    app.register_blueprint(token_bp)
     app.register_blueprint(scores_bp)
 
     return app

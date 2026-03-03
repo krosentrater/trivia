@@ -1,7 +1,6 @@
 import time
 import threading
 
-# Simple in-memory TTL cache
 _cache = {}
 _cache_lock = threading.Lock()
 
