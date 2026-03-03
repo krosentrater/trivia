@@ -6,3 +6,8 @@ A full‑stack trivia experience built with a Flask backend, React/Vite frontend
 - 📚 Fully documented architecture for easy onboarding
 - 🌐 Integrates with Open Trivia DB for real‑time questions
 - 🧪 Testing‑friendly structure for both backend and fronten
+
+To run application, activate virtual environment: source/Scripts/activate 
+Then, run Flask application: flask --app trivia.app:create_app run
+
+On a seperate terminal, cd into trivia-frontend and run React: npm run.
